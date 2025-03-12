@@ -1,16 +1,14 @@
 package edu.byui.apj.storefront.tutorial101;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j; // Lombok's @Slf4j for logging
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
+@Slf4j // Lombok generates the log field for us
 public class AccessingDataJpaApplication {
-
-    private static final Logger log = LoggerFactory.getLogger(AccessingDataJpaApplication.class);
 
     public static void main(String[] args) {
         SpringApplication.run(AccessingDataJpaApplication.class);
@@ -19,6 +17,9 @@ public class AccessingDataJpaApplication {
     @Bean
     public CommandLineRunner demo(CustomerRepository repository) {
         return (args) -> {
+            // Log the class name of the logger
+            log.debug("Class name of the logger: {}", getClass().getSimpleName());
+
             // save a few customers
             repository.save(new Customer("Jack", "Bauer"));
             repository.save(new Customer("Chloe", "O'Brian"));
@@ -50,5 +51,4 @@ public class AccessingDataJpaApplication {
             log.info("");
         };
     }
-
 }
