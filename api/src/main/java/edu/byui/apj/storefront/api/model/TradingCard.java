@@ -16,5 +16,4 @@ public class TradingCard {
     private BigDecimal price;
     private String imageUrl;
 
-
 }

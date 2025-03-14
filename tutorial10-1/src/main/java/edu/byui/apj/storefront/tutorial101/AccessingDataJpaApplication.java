@@ -1,14 +1,17 @@
 package edu.byui.apj.storefront.tutorial101;
 
 import lombok.extern.slf4j.Slf4j; // Lombok's @Slf4j for logging
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-@Slf4j // Lombok generates the log field for us
 public class AccessingDataJpaApplication {
+
+    Logger log = LoggerFactory.getLogger(AccessingDataJpaApplication.class);
 
     public static void main(String[] args) {
         SpringApplication.run(AccessingDataJpaApplication.class);
