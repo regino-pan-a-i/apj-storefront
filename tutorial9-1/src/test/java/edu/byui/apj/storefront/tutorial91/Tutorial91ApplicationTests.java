@@ -1,12 +1,13 @@
 package edu.byui.apj.storefront.tutorial91;
 
+import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class Tutorial91ApplicationTests {
+public class Tutorial91ApplicationTests {
 
 	@Test
-	void contextLoads() {
+    public void contextLoads() {
 	}
 
 }

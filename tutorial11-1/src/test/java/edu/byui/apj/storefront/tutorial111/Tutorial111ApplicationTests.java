@@ -1,10 +1,10 @@
-package edu.byui.apj.storefront.api;
+package edu.byui.apj.storefront.tutorial111;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ApiApplicationTests {
+class Tutorial111ApplicationTests {
 
     @Test
     void contextLoads() {

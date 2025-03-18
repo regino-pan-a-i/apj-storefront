@@ -6,13 +6,9 @@ import org.apache.commons.csv.CSVRecord;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Reader;
+import java.io.*;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -31,7 +27,7 @@ public class TradingCardService {
             Iterable<CSVRecord> records = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(reader);
 
             for (CSVRecord record : records) {
-            //ID,Name,Specialty,Contribution,Price,ImageUrl
+                //ID,Name,Specialty,Contribution,Price,ImageUrl
                 Long id = Long.parseLong(record.get("ID"));
                 String name = record.get("Name");
                 String speciality = record.get("Specialty");
@@ -60,40 +56,28 @@ public class TradingCardService {
 
     }
 
-    public List<TradingCard> getFilteredCars(BigDecimal minPrice, BigDecimal maxPrice, String speciality, String sort) {
-        List<TradingCard> cards = new ArrayList<>(tradingCards);  // Create a new list to work with
-
-        if (minPrice != null) {
-            cards = cards.stream()
-                    .filter(card -> card.getPrice().compareTo(minPrice) >= 0)
-                    .collect(Collectors.toList());  // Reassign to cards
-        }
-
-        if (maxPrice != null) {
-            cards = cards.stream()
-                    .filter(card -> card.getPrice().compareTo(maxPrice) <= 0)
-                    .collect(Collectors.toList());  // Reassign to cards
-        }
-
-        if (speciality != null) {
-            cards = cards.stream()
-                    .filter(card -> card.getSpecialty().equalsIgnoreCase(speciality))
-                    .collect(Collectors.toList());  // Reassign to cards
-        }
-
-        if (sort != null) {
-            if (sort.equalsIgnoreCase("name")) {
-                cards.sort(Comparator.comparing(TradingCard::getName));
-            } else if (sort.equalsIgnoreCase("price")) {
-                cards.sort(Comparator.comparing(TradingCard::getPrice));
-            }
-        }
-
-        return cards;
+    public List<TradingCard> getCards(int page, int size) {
+        int fromIndex = page * size;
+        int toIndex = Math.min(fromIndex + size, tradingCards.size());
+        return tradingCards.subList(fromIndex, toIndex);
     }
 
-    public List<TradingCard> searchCard(String query) {
+    public List<TradingCard> filterAndSortCards(BigDecimal minPrice, BigDecimal maxPrice, String specialty, String sort) {
+        return tradingCards.stream()
+                .filter(card -> (minPrice == null || card.getPrice().compareTo(minPrice) >= 0))
+                .filter(card -> (maxPrice == null || card.getPrice().compareTo(maxPrice) <= 0))
+                .filter(card -> (specialty == null || card.getSpecialty().equalsIgnoreCase(specialty)))
+                .sorted((card1, card2) -> {
+                    if ("price".equalsIgnoreCase(sort)) {
+                        return card1.getPrice().compareTo(card2.getPrice());
+                    } else { // default to sorting by name
+                        return card1.getName().compareTo(card2.getName());
+                    }
+                })
+                .collect(Collectors.toList());
+    }
 
+    public List<TradingCard> searchCards(String query) {
         return tradingCards.stream()
                 .filter(card -> card.getName().toLowerCase().contains(query.toLowerCase()) ||
                         card.getContribution().toLowerCase().contains(query.toLowerCase()))
