@@ -8,13 +8,34 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+
 @RestController
 @RequestMapping("/api/trading-cards")
 public class TradingCardController {
+
     private final TradingCardRepository tradingCardRepository;
+
     public TradingCardController(TradingCardRepository tradingCardRepository) {
         this.tradingCardRepository = tradingCardRepository;
     }
+    @GetMapping
+    public List<TradingCard> getCards(@RequestParam(defaultValue = "0") int page,
+                                      @RequestParam(defaultValue = "20") int size,
+                                      @RequestParam(required = false) String sortParam) {
+
+        Pageable pageable;
+
+        if ( sortParam == null || !sortParam.isEmpty()) {
+            pageable = PageRequest.of(page, size);
+
+        } else {
+            Sort sort = Sort.by(Sort.Order.asc(sortParam));
+            pageable = PageRequest.of(page, size, sort);  // Create Pageable object//
+        }
+
+        return tradingCardRepository.findAll(pageable).getContent();
+    }
+
     // Get a trading card by ID
     @GetMapping("/{id}")
     public ResponseEntity<TradingCard> getTradingCardById(@PathVariable String id) {
@@ -36,16 +57,14 @@ public class TradingCardController {
     }
     // Filter by specialty
     @GetMapping("/filter/specialty")
-    public ResponseEntity<List<TradingCard>> filterBySpecialty(
-            @RequestParam String specialty) {
+    public ResponseEntity<List<TradingCard>> filterBySpecialty(@RequestParam String specialty) {
         return
                 ResponseEntity.ok(tradingCardRepository.findBySpecialty(specialty)
                 );
     }
     // Search trading cards by name or contribution
     @GetMapping("/search")
-    public ResponseEntity<List<TradingCard>> searchTradingCards(
-            @RequestParam String query) {
+    public ResponseEntity<List<TradingCard>> searchTradingCards(@RequestParam String query) {
         return
                 ResponseEntity.ok(tradingCardRepository.findByNameContainsIgnoreCaseOrContributionContainsIgnoreCase(query, query));
     }
