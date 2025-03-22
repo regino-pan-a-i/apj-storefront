@@ -36,6 +36,13 @@ public class TradingCardController {
         return tradingCardRepository.findAll(pageable).getContent();
     }
 
+    @GetMapping("/filter/price")
+    public List<TradingCard> filterByPrice(@RequestParam int minPrice,
+                                      @RequestParam int maxPrice) {
+
+        return tradingCardRepository.findByPriceRange(minPrice, maxPrice);
+    }
+
     // Get a trading card by ID
     @GetMapping("/{id}")
     public ResponseEntity<TradingCard> getTradingCardById(@PathVariable String id) {
