@@ -16,7 +16,7 @@ public interface TradingCardRepository extends MongoRepository<TradingCard, Stri
 
     Page<TradingCard> findAll(Pageable pageable);
 
-    List<TradingCard> findByPriceRange(double lower, double upper);
+    List<TradingCard> findByPriceBetween(double lower, double upper);
 
 }
 

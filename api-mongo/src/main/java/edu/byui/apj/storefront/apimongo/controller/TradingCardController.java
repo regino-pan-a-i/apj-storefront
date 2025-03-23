@@ -40,7 +40,7 @@ public class TradingCardController {
     public List<TradingCard> filterByPrice(@RequestParam int minPrice,
                                       @RequestParam int maxPrice) {
 
-        return tradingCardRepository.findByPriceRange(minPrice, maxPrice);
+        return tradingCardRepository.findByPriceBetween(minPrice, maxPrice);
     }
 
     // Get a trading card by ID
