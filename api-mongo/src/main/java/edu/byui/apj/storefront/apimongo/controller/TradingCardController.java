@@ -21,16 +21,16 @@ public class TradingCardController {
     @GetMapping
     public List<TradingCard> getCards(@RequestParam(defaultValue = "0") int page,
                                       @RequestParam(defaultValue = "20") int size,
-                                      @RequestParam(required = false) String sortParam) {
+                                      @RequestParam(required = false) String sort) {
 
         Pageable pageable;
 
-        if ( sortParam == null || !sortParam.isEmpty()) {
+        if ( sort == null || sort.isEmpty()) {
             pageable = PageRequest.of(page, size);
 
         } else {
-            Sort sort = Sort.by(Sort.Order.asc(sortParam));
-            pageable = PageRequest.of(page, size, sort);  // Create Pageable object//
+            Sort sorting = Sort.by(Sort.Order.asc(sort));
+            pageable = PageRequest.of(page, size, sorting);  // Create Pageable object//
         }
 
         return tradingCardRepository.findAll(pageable).getContent();

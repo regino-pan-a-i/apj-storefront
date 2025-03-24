@@ -3,8 +3,10 @@ import edu.byui.apj.storefront.web.model.MongoTradingCard;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.math.BigDecimal;
+import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,6 +21,15 @@ public class MongoTradingCardClientService {
 
     // ✅ Get all trading cards (paginated & sorted)
     public List<MongoTradingCard> getAllTradingCards(int page, int size, String sort) {
+
+        URI finalUri = UriComponentsBuilder.fromUriString("http://localhost:8082/trading-cards") // Replace with actual base URL
+                .queryParam("page", page)
+                .queryParam("size", size)
+                .queryParamIfPresent("sort", Optional.ofNullable(sort))
+                .build()
+                .toUri();
+        System.out.println("Final URI: " + finalUri);
+        
         return webClient.get()
                 .uri(uriBuilder -> uriBuilder
                         .queryParam("page", page)
