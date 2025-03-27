@@ -1,6 +1,6 @@
 package edu.byui.apj.storefront.tutorial101;
 
-import org.junit.jupiter.api.Test;
+import org.testng.annotations.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest

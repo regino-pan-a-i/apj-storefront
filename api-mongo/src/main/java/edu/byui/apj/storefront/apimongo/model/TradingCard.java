@@ -14,4 +14,8 @@ public class TradingCard {
     private String contribution;
     private Double price;
     private String imageUrl;
+
+    public void set_id(String _id) {
+        this._id = _id;
+    }
 }

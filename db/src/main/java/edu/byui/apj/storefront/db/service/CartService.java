@@ -1,9 +1,12 @@
 package edu.byui.apj.storefront.db.service;
 
-import edu.byui.apj.storefront.db.model.Cart;
-import edu.byui.apj.storefront.db.model.Item;
+
 import edu.byui.apj.storefront.db.repository.CartRepository;
+import edu.byui.apj.storefront.model.Cart;
+import edu.byui.apj.storefront.model.Item;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +17,9 @@ import java.util.List;
 public class CartService {
     @Autowired
     private CartRepository cartRepository;
+
+    private static final Logger logger = LoggerFactory.getLogger(CartService.class);
+
 
     public Cart addItemToCart(String cartId, Item item) {
         // Find the cart
@@ -45,7 +51,7 @@ public class CartService {
         // Find the cart
         Cart cart = cartRepository.findById(cartId)
                 .orElseThrow(() -> new RuntimeException("Cart not found"));
-        log.info("Updating item {}", item);
+        logger.info("Updating item {}", item);
 
         // Ensure item exists in the cart, then update
         cart.getItems().removeIf(i -> i.getId().equals(item.getId()));

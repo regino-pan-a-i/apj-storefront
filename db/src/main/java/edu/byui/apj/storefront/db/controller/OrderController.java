@@ -1,7 +1,8 @@
 package edu.byui.apj.storefront.db.controller;
 
-import edu.byui.apj.storefront.db.model.CardOrder;
+
 import edu.byui.apj.storefront.db.service.OrderService;
+import edu.byui.apj.storefront.model.CardOrder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
