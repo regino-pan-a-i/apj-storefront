@@ -2,8 +2,8 @@ package edu.byui.apj.storefront.db.service;
 
 
 import edu.byui.apj.storefront.db.repository.CartRepository;
-import edu.byui.apj.storefront.model.Cart;
-import edu.byui.apj.storefront.model.Item;
+import edu.byui.apj.storefront.db.model.Cart;
+import edu.byui.apj.storefront.db.model.Item;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

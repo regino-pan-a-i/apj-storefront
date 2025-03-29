@@ -1,9 +1,9 @@
 package edu.byui.apj.storefront.db.controller;
 
 
+import edu.byui.apj.storefront.db.model.Cart;
+import edu.byui.apj.storefront.db.model.Item;
 import edu.byui.apj.storefront.db.service.CartService;
-import edu.byui.apj.storefront.model.Cart;
-import edu.byui.apj.storefront.model.Item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -1,8 +1,8 @@
 package edu.byui.apj.storefront.db.service;
 
 import edu.byui.apj.storefront.db.repository.OrderRepository;
-import edu.byui.apj.storefront.model.CardOrder;
-import edu.byui.apj.storefront.model.Cart;
+import edu.byui.apj.storefront.db.model.CardOrder;
+import edu.byui.apj.storefront.db.model.Cart;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;

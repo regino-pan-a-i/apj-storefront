@@ -1,6 +1,6 @@
 package edu.byui.apj.storefront.db.repository;
 
-import edu.byui.apj.storefront.model.Cart;
+import edu.byui.apj.storefront.db.model.Cart;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
