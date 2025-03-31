@@ -1,6 +1,5 @@
 package edu.byui.apj.storefront.jms;
 
-
 import edu.byui.apj.storefront.model.Cart;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
