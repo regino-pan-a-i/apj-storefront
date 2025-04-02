@@ -17,7 +17,7 @@ public class OrderConfirmationConsumer {
         this.webClientBuilder = webClientBuilder;
     }
 
-    @JmsListener(destination = "orderQueue")
+    @JmsListener(destination = "orderQueue", containerFactory = "myFactory")
     public void receiveOrderConfirmation(String orderId) {
         try {
             WebClient webClient = webClientBuilder.baseUrl("http://localhost:8083").build();

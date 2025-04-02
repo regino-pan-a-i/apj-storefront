@@ -25,7 +25,7 @@ public class CartCleanupJob {
         try {
             WebClient webClient = webClientBuilder.baseUrl("http://localhost:8083").build();
             List<Cart> carts = webClient.get()
-                    .uri("/cart/noorderLinks")
+                    .uri("/cart/noorder")
                     .retrieve()
                     .bodyToFlux(Cart.class)
                     .collectList()
@@ -52,7 +52,7 @@ public class CartCleanupJob {
         }
     }
 
-    @Scheduled(cron = "0 0 0 * * ?")
+    @Scheduled(cron = "0 */2 * * * ?")
     public void cleanupCarts() {
         List<Cart> carts = getCartsWithoutOrders();
         ExecutorService executorService = Executors.newFixedThreadPool(2);

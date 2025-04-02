@@ -33,56 +33,56 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-artemis</artifactId>
-            <version>2.7.4</version> <!-- Latest version for Spring Boot 2.7.x -->
+<!--            <version>2.7.4</version> &lt;!&ndash; Latest version for Spring Boot 2.7.x &ndash;&gt;-->
         </dependency>
 
         <!-- Spring Boot Starter Integration -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-integration</artifactId>
-            <version>2.7.4</version> <!-- Latest version for Spring Boot 2.7.x -->
+<!--            <version>2.7.4</version> &lt;!&ndash; Latest version for Spring Boot 2.7.x &ndash;&gt;-->
         </dependency>
 
         <!-- Spring Boot Starter Web -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>2.7.4</version> <!-- Latest version for Spring Boot 2.7.x -->
+<!--            <version>2.7.4</version> &lt;!&ndash; Latest version for Spring Boot 2.7.x &ndash;&gt;-->
         </dependency>
 
         <!-- Spring Boot Starter WebFlux -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-webflux</artifactId>
-            <version>2.7.4</version> <!-- Latest version for Spring Boot 2.7.x -->
+<!--            <version>2.7.4</version> &lt;!&ndash; Latest version for Spring Boot 2.7.x &ndash;&gt;-->
         </dependency>
 
         <!-- Spring Integration HTTP -->
         <dependency>
             <groupId>org.springframework.integration</groupId>
             <artifactId>spring-integration-http</artifactId>
-            <version>6.1.0</version> <!-- Ensure it's a Jakarta-compatible version -->
+<!--            <version>6.1.0</version> &lt;!&ndash; Ensure it's a Jakarta-compatible version &ndash;&gt;-->
         </dependency>
 
         <!-- Spring Integration JMS -->
         <dependency>
             <groupId>org.springframework.integration</groupId>
             <artifactId>spring-integration-jms</artifactId>
-            <version>5.5.11</version> <!-- Latest version -->
+<!--            <version>5.5.11</version> &lt;!&ndash; Latest version &ndash;&gt;-->
         </dependency>
 
         <!-- Spring Integration WebFlux -->
         <dependency>
             <groupId>org.springframework.integration</groupId>
             <artifactId>spring-integration-webflux</artifactId>
-            <version>5.5.11</version> <!-- Latest version -->
+<!--            <version>5.5.11</version> &lt;!&ndash; Latest version &ndash;&gt;-->
         </dependency>
 
         <!-- Lombok (for code generation) -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.24</version> <!-- Latest version -->
+<!--            <version>1.18.24</version> &lt;!&ndash; Latest version &ndash;&gt;-->
             <optional>true</optional>
         </dependency>
 
@@ -90,7 +90,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>2.7.4</version> <!-- Latest version for Spring Boot 2.7.x -->
+<!--            <version>2.7.4</version> &lt;!&ndash; Latest version for Spring Boot 2.7.x &ndash;&gt;-->
             <scope>test</scope>
         </dependency>
 
@@ -98,7 +98,7 @@
         <dependency>
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-test</artifactId>
-            <version>3.4.9</version> <!-- Latest version -->
+<!--            <version>3.4.9</version> &lt;!&ndash; Latest version &ndash;&gt;-->
             <scope>test</scope>
         </dependency>
 
@@ -106,7 +106,7 @@
         <dependency>
             <groupId>org.springframework.integration</groupId>
             <artifactId>spring-integration-test</artifactId>
-            <version>5.5.11</version> <!-- Latest version -->
+<!--            <version>5.5.11</version> &lt;!&ndash; Latest version &ndash;&gt;-->
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -117,12 +117,8 @@
         <dependency>
             <groupId>jakarta.servlet</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
-            <version>6.0.0</version>
+<!--            <version>6.0.0</version>-->
             <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-activemq</artifactId>
         </dependency>
     </dependencies>
     <build>

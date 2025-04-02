@@ -18,14 +18,8 @@ public class OrderConfirmationController {
 
     private OrderConfirmationProducer producer;
 
-    @Bean
-    public JmsListenerContainerFactory<?> myFactory(@Qualifier("jmsConnectionFactory") ConnectionFactory connectionFactory,
-                                                    DefaultJmsListenerContainerFactoryConfigurer configurer) {
-        DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
-        // This provides all auto-configured defaults to this factory, including the message converter
-        configurer.configure(factory, connectionFactory);
-        // You could still override some settings if necessary.
-        return factory;
+    public OrderConfirmationController(OrderConfirmationProducer producer) {
+        this.producer = producer;
     }
 
     @GetMapping("/{orderId}")
@@ -37,6 +31,8 @@ public class OrderConfirmationController {
             String body = "Order confirm message sent for order ID: " + orderId;
             return new ResponseEntity<>(body, HttpStatus.OK);
         } catch (Exception e) {
+
+            System.out.println(e);
             // Return a generic error message
             String errorMessage = "An unexpected error occurred while processing the order ID: " + orderId;
             return new ResponseEntity<>(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR);

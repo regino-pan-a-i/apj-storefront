@@ -63,6 +63,7 @@ public class CartService {
     }
 
     public Cart getCart(String cartId) {
+
         return cartRepository.findById(cartId)
                 .orElseThrow(() -> new RuntimeException("Cart not found"));
     }
