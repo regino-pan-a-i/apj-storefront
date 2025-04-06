@@ -4,6 +4,7 @@ import edu.byui.apj.storefront.db.repository.OrderRepository;
 import edu.byui.apj.storefront.db.model.CardOrder;
 import edu.byui.apj.storefront.db.model.Cart;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -17,6 +18,7 @@ public class OrderService {
         this.cartService = cartService;
     }
 
+    @Transactional
     public CardOrder saveOrder(CardOrder order) {
         Cart cart = cartService.getCart(order.getCart().getId());
         order.setCart(cart);

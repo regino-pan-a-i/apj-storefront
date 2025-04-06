@@ -13,6 +13,9 @@ public class CardOrder {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
+    @Version
+    private Long version;
+
     @OneToOne(cascade = CascadeType.ALL)
     Cart cart;
 
